@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+
+  <!-- This project now serves as a container that references all test projects -->
+  <ItemGroup>
+    <ProjectReference Include="Million.Api.Tests\Million.Api.Tests.csproj" />
+    <ProjectReference Include="Million.Application.Tests\Million.Application.Tests.csproj" />
+    <ProjectReference Include="Million.Domain.Tests\Million.Domain.Tests.csproj" />
+    <ProjectReference Include="Million.Infrastructure.Tests\Million.Infrastructure.Tests.csproj" />
+  </ItemGroup>
+
+</Project>
