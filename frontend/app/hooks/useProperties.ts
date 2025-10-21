@@ -27,7 +27,7 @@ export function useProperties(initialFilters: PropertyFilters = { page: 1, pageS
 
   useEffect(() => {
     fetchProperties(searchFilters);
-  }, [fetchProperties, searchFilters]);
+  }, [searchFilters]);
 
   const handleSearch = useCallback(() => {
     setSearchFilters({ ...filters, page: 1 });

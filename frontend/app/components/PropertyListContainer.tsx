@@ -36,13 +36,7 @@ export default function PropertyListContainer() {
     }
 
     if (loading) {
-      return (
-        <Box sx={{ textAlign: 'center', py: 8 }}>
-          <Typography variant="h6" sx={{ color: '#78716C' }}>
-            Cargando propiedades...
-          </Typography>
-        </Box>
-      );
+      return <PropertyList properties={[]} loading={true} />;
     }
 
     if (!data || data.properties.length === 0) {

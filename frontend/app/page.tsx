@@ -1,9 +1,7 @@
-import { Suspense } from 'react';
 import { Container, Typography, Box, Divider } from '@mui/material';
 import DiamondIcon from '@mui/icons-material/Diamond';
 import Header from '@/components/Header';
 import PropertyListContainer from '@/components/PropertyListContainer';
-import Loading from '@/components/Loading';
 
 export default function Home() {
   return (
@@ -68,9 +66,7 @@ export default function Home() {
             />
           </Box>
 
-          <Suspense fallback={<Loading />}>
-            <PropertyListContainer />
-          </Suspense>
+          <PropertyListContainer />
         </Container>
       </Box>
     </>
