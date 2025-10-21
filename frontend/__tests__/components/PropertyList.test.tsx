@@ -128,6 +128,13 @@ describe('PropertyList', () => {
     expect(screen.getByText('Casa & Apartamento "Especial"')).toBeInTheDocument();
   });
 
+  it('renders loading skeleton when loading is true', () => {
+    render(<PropertyList properties={[]} loading={true} />);
+    
+    const skeletons = document.querySelectorAll('.MuiSkeleton-root');
+    expect(skeletons.length).toBeGreaterThan(0);
+  });
+
   it('handles properties with very long names', () => {
     const longNameProperties: Property[] = [
       {

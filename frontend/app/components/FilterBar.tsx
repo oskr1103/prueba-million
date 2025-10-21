@@ -7,9 +7,10 @@ interface FilterBarProps {
   filters: PropertyFilters;
   onChange: (filters: PropertyFilters) => void;
   onSearch: () => void;
+  onClear: () => void;
 }
 
-export default function FilterBar({ filters, onChange, onSearch }: FilterBarProps) {
+export default function FilterBar({ filters, onChange, onSearch, onClear }: FilterBarProps) {
   return (
     <Paper
       elevation={0}
@@ -110,10 +111,7 @@ export default function FilterBar({ filters, onChange, onSearch }: FilterBarProp
       <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
         <Button
           variant="outlined"
-          onClick={() => {
-            onChange({ page: 1, pageSize: 9, name: '', address: '', minPrice: undefined, maxPrice: undefined });
-            setTimeout(onSearch, 100);
-          }}
+          onClick={onClear}
           sx={{
             minWidth: 120,
           }}

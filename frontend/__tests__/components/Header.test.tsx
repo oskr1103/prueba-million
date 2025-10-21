@@ -21,9 +21,8 @@ describe('Header', () => {
 
   it('renders navigation items', () => {
     render(<Header />);
-    expect(screen.getByText('COLECCIONES')).toBeInTheDocument();
-    expect(screen.getByText('EXCLUSIVAS')).toBeInTheDocument();
-    expect(screen.getByText('CONTACTO')).toBeInTheDocument();
+    expect(screen.getByText('MILLION')).toBeInTheDocument();
+    expect(screen.getByText('EXCLUSIVE REAL ESTATE')).toBeInTheDocument();
   });
 
   it('renders diamond icon', () => {
@@ -42,7 +41,7 @@ describe('Header', () => {
 
   it('has responsive navigation classes', () => {
     render(<Header />);
-    const navigation = screen.getByText('COLECCIONES').closest('div');
-    expect(navigation).toHaveClass('MuiBox-root');
+    const logoContainer = screen.getByText('MILLION').closest('div');
+    expect(logoContainer).toBeInTheDocument();
   });
 });

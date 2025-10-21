@@ -140,26 +140,22 @@ describe('FilterBar', () => {
     expect(mockOnSearch).toHaveBeenCalled();
   });
 
-  it('calls onChange and onSearch when clear button is clicked', () => {
+  it('calls onClear when clear button is clicked', () => {
+    const mockOnClear = jest.fn();
+    
     render(
       <FilterBar
         filters={mockFilters}
         onChange={mockOnChange}
         onSearch={mockOnSearch}
+        onClear={mockOnClear}
       />
     );
 
     const clearButton = screen.getByRole('button', { name: /limpiar/i });
     fireEvent.click(clearButton);
 
-    expect(mockOnChange).toHaveBeenCalledWith({
-      page: 1,
-      pageSize: 9,
-      name: '',
-      address: '',
-      minPrice: undefined,
-      maxPrice: undefined,
-    });
+    expect(mockOnClear).toHaveBeenCalledTimes(1);
   });
 
   it('calls onSearch when Enter is pressed in name input', () => {
@@ -384,33 +380,22 @@ describe('FilterBar', () => {
     expect(screen.getByText('Filtros de Búsqueda')).toBeInTheDocument();
   });
 
-  it('calls onSearch with timeout when clear button is clicked', async () => {
+  it('calls onClear when clear button is clicked with timeout', () => {
+    const mockOnClear = jest.fn();
+    
     render(
       <FilterBar
         filters={mockFilters}
         onChange={mockOnChange}
         onSearch={mockOnSearch}
+        onClear={mockOnClear}
       />
     );
 
     const clearButton = screen.getByRole('button', { name: /limpiar/i });
     fireEvent.click(clearButton);
 
-    expect(mockOnChange).toHaveBeenCalledWith({
-      page: 1,
-      pageSize: 9,
-      name: '',
-      address: '',
-      minPrice: undefined,
-      maxPrice: undefined,
-    });
-
-    // Fast-forward time to trigger the timeout
-    jest.advanceTimersByTime(100);
-    
-    await waitFor(() => {
-      expect(mockOnSearch).toHaveBeenCalledTimes(1);
-    });
+    expect(mockOnClear).toHaveBeenCalledTimes(1);
   });
 
   it('handles special characters in name input', () => {
